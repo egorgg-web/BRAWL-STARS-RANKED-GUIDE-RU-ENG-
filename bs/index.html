@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#111622">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Brawl Stars Guide Hub</title>
+</head>
+<body>
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
+    <!-- ЛЕВОЕ МЕНЮ (СОДЕРЖАНИЕ) -->
+    <aside class="sidebar">
+       <div class="logo">BRAWL STARS<br>RANKED GUIDE</div>
+        <nav>
+            <div class="menu-title"></div>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="#" class="menu-link active">
+                        <span class="menu-icon"></span> Ранговый бой
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon"></span> Режимы
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon"></span> Фичи и баги
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon"></span> Мини-игры
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-tools">
+            <div class="tools-title">Настройки</div>
+            <div class="tools-row">
+                <button id="sound-toggle" class="tool-btn" title="Звук вкл/выкл">🔊</button>
+                <button id="font-dec" class="tool-btn" title="Уменьшить текст">A−</button>
+                <button id="font-inc" class="tool-btn" title="Увеличить текст">A+</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ОСНОВНАЯ ЗОНА -->
+    <main class="main-content">
+        <!-- Верхняя панель поиска -->
+        <header class="header">
+              <button id="toggle-btn" class="toggle-btn" title="Скрыть/Показать меню">
+                ☰
+            </button>
+
+               <!-- Контейнер для кнопки темы и поиска -->
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <input type="text" id="search-input" class="search-bar" placeholder="Поиск по странице...">
+                <button id="lang-toggle" class="lang-toggle" title="Язык / Language">EN</button>
+                <button id="theme-toggle" class="theme-toggle" title="Сменить тему">🌙</button>
+            </div>
+        </header>
+
+
+        <!-- Тело страницы -->
+               <section class="content-body">
+            <div id="page-ranked" class="page-content active">
+                <h1 class="page-title">Ранговый бой</h1>
+                <p class="page-subtitle">Подробный гайд по соревновательному режиму в Brawl Stars</p>
+
+            <!-- Совет дня -->
+            <div class="card tip-card" style="margin-bottom: 25px;">
+                <div class="card-header">💡 Совет дня</div>
+                <p id="tip-text" style="font-size: 18px; line-height: 1.6;"></p>
+                <button id="tip-next" class="game-btn" style="margin-top: 15px;">Другой совет</button>
+            </div>
+
+            <!-- Оглавление -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Содержание</div>
+                <ul class="toc-list">
+                    <li><a href="#" class="toc-link" data-target="sec-draft">Что происходит после нажатия «Играть»</a></li>
+                    <li><a href="#" class="toc-link" data-target="sec-update">Обновление 3 ноября 2026 года</a></li>
+                    <li><a href="#" class="toc-link" data-target="sec-changes">Ключевые изменения</a></li>
+                    <li><a href="#" class="toc-link" data-target="sec-ranks">Ранги, сезоны и награды</a></li>
+                </ul>
+            </div>
+
+            <!-- Вводная часть -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Что такое ранговый бой?</div>
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 15px;">
+                    <strong>Ранговый бой (англ. Ranked)</strong> — это соревновательный игровой режим, который открывается при достижении <strong>5000 трофеев</strong> на «Пути к славе».
+                </p>
+                <p style="font-size: 18px; line-height: 1.6;">
+                    Основная цель — повышать свой ранг, побеждая в матчах и зарабатывая очки. За поражения очки, соответственно, отнимаются.
+                </p>
+            </div>
+
+            <!-- Особенности режима -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Основные особенности режима</div>
+                <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                    <li class="data-item" style="display: block; padding: 15px 0;">
+                        <strong>Формат 3 на 3:</strong> Игра проходит в различных режимах («Захват кристаллов», «Броубол», «Нокаут», «Ограбление», «Горячая зона», «Награда за поимку»).
+                    </li>
+                    <li class="data-item" style="display: block; padding: 15px 0;">
+                        <strong>Система рангов:</strong> Игроки повышают свой ранг (от начальных до высоких вроде «Мастера» / Pro).
+                    </li>
+                    <li class="data-item" style="display: block; padding: 15px 0;">
+                        <strong>Драфт (выбор бойцов):</strong> На определенных рангах перед матчем включается стадия драфта, где команды по очереди выбирают и банят бойцов.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 15px 0;">
+                        <strong>Награды:</strong> За повышение рангов выдаются уникальные призы, включая призы Старр, ресурсы и эксклюзивные скины.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Этап драфта -->
+            <h2 id="sec-draft" class="page-title" style="font-size: 24px; margin-top: 40px;">Что происходит после нажатия кнопки «Играть»?</h2>
+            <p class="page-subtitle">Берем игры от ранга «Мифический» и выше</p>
+
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Как проходит выбор бойцов</div>
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 15px;">
+                    1. Начинается подбор противников.
+                </p>
+                <div class="img-frame">
+                <img src="img/Podbor.png" alt="Подбор противников">
+                </div>
+                
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 15px;">
+                    2. Выбирается случайная карта. Подбрасывается монета, которая определяет, какая команда выбирает первой.
+                </p>
+                <div class="img-frame">
+                <img src="img/CoinFlip.png" alt="Подбор противников">
+                </div>
+
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 15px;">
+                    Первый выбор бойца называют <strong>ФП (First pick)</strong>, а последний — <strong>ЛП (Last pick)</strong>. Возле каждого игрока справа есть цифры от 1 до 6 — они означают очередь пика.
+                </p>
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 15px;">
+                    Сначала обе команды блокируют по 3 персонажа (каждый игрок по 1). Если персонаж в бане, его нельзя будет взять.
+                </p>
+                
+                <div class="img-frame">
+                <img src="img/Ranked3.0.png" alt="Подбор противников">
+                </div>
+            </div>
+
+            <!-- Обновление 3.0 -->
+            <h2 id="sec-update" class="page-title" style="font-size: 24px; margin-top: 40px;">Обновление 3 ноября 2026 года</h2>
+            <p class="page-subtitle">Как изменился ранговый бой</p>
+
+            <div class="dashboard-grid">
+                <!-- Было -->
+                <div class="card">
+                    <div class="card-header">Было <span class="badge-live" style="background-color: #6272a4;">Старая версия</span></div>
+                    <div class="img-frame" style="margin: 0;">
+                        <img src="img/Ranked2.0.png" alt="Ранговый бой до обновления">
+                    </div>
+                </div>
+                <!-- Стало -->
+                <div class="card">
+                    <div class="card-header">Стало <span class="badge-live">Новая версия</span></div>
+                    <div class="img-frame" style="margin: 0;">
+                        <img src="img/Ranked3.0.png" alt="Ранговый бой после обновления">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Изменения -->
+            <h2 id="sec-changes" class="page-title" style="font-size: 24px; margin-top: 40px;">Ключевые изменения</h2>
+            
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">1. Изменения интерфейса перед матчем</div>
+                <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Улучшенный экран выбора:</strong> На экране отображается больше бойцов, добавлены фильтры по классам и строка поиска.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>3D модель карты</strong> на заднем фоне.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Быстрый чат во время драфта:</strong> Добавлены реплики быстрых сообщений, чтобы предлагать союзникам забанить конкретного персонажа.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Обмен очередью:</strong> Игроки одной команды могут меняться очередью выбора (свапаться) во время фазы пиков.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">2. Повышение требований к игрокам</div>
+                <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Только 11 уровень силы:</strong> Для участия на любом ранге (от Бронзы до Алмаза) требуются бойцы 11-го уровня (ранее — 9-го).
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Порог для «Алмаза»:</strong> Теперь нужно иметь минимум 12 бойцов 11-го уровня (вместо 9).
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Увеличение бесплатных бойцов:</strong> Количество бесплатных максимально прокачанных персонажей увеличили с 3 до 6.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Доступ к режиму:</strong> Ранговый бой теперь открывается при достижении 5000 трофеев (ранее — с 1000).
+                    </li>
+                </ul>
+            </div>
+
+                        <!-- 3. Новая система очков -->
+            <div class="card" style="margin-top: 25px; margin-bottom: 25px;">
+                <div class="card-header">3. Новая система начисления очков (Elo)</div>
+                <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Победа 2:0 (Эпическая):</strong> Вы получаете больше очков за доминирование.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Победа 2:1 (Близкая):</strong> Стандартное количество очков.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Поражение 1:2 (Близкое):</strong> Вы теряете меньше очков.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Поражение 0:2 (Эпическое):</strong> Вы теряете больше очков.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 4. Мягкий сброс сезона -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">4. Более мягкий сброс сезона</div>
+                <p style="font-size: 18px; line-height: 1.6;">
+                    В начале нового сезона ваш ранг теперь сбрасывается всего на <strong>2 ранга</strong> вниз (ранее сброс составлял 6 рангов). Это позволяет быстрее возвращаться на прежние высоты.
+                </p>
+            </div>
+
+            <!-- 5. Ограничения для высоких рангов -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">5. Ограничения для высоких рангов</div>
+                <p style="font-size: 18px; line-height: 1.6;">
+                    Для игроков ранга <strong>«Мастер I» и выше</strong> теперь действует строгое правило: заходить в матчи можно <strong>только в одиночку</strong>. Игра в группах на самом верху таблицы запрещена, чтобы исключить сговоры.
+                </p>
+            </div>
+
+            <!-- 6. Обновление наград и статистики -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">6. Обновление наград и статистики</div>
+                <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Рамки и иконки:</strong> За достижение новых рангов выдаются уникальные прокачиваемые рамки (до 9 уровня), а также новые иконки и значки.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Детальная статистика:</strong> После матча теперь можно посмотреть нанесённый урон, лечение, полученный урон и выполненные задачи по режиму (разбито по раундам).
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 7. Функция «Играть снова» -->
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">7. Функция «Играть снова» (Play Again)</div>
+                <p style="font-size: 18px; line-height: 1.6;">
+                    В ранговом бою появилась кнопка для мгновенного поиска нового матча с той же командой. Это удобно для сыгранных тиммейтов. Однако для ранга «Мастер I» и выше эта функция недоступна (из-за ограничения на игру в одиночку).
+                </p>
+            </div>
+
+            <!-- Ранги, сезоны и награды -->
+            <h2 id="sec-ranks" class="page-title" style="font-size: 24px; margin-top: 40px;">Ранги, сезоны и награды</h2>
+
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Лестница рангов</div>
+                <p style="font-size: 18px; line-height: 1.6;">
+                    В ранговом бою 22 ступени в 8 лигах: Бронза, Серебро, Золото, Алмаз, Мифический, Легендарный, Мастер и Pro. В каждой лиге, кроме Pro, три ступени (I, II и III).
+                </p>
+            </div>
+
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Сезоны</div>
+                <p style="font-size: 18px; line-height: 1.6;">
+                    Ранговый сезон длится месяц. В начале нового сезона ваш ранг падает на 2 ступени, но не ниже «Серебро I». Тем, кто открыл ранговый бой до обновления, доступ сохраняется, даже если у них меньше 5000 трофеев.
+                </p>
+            </div>
+
+            <div class="card" style="margin-bottom: 25px;">
+                <div class="card-header">Награды и прогресс</div>
+                <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Pro Pass:</strong> каждая победа в ранговом бою даёт 60 опыта Pro Pass, максимум 1200 в неделю. У владельцев Pro Pass опыта вдвое больше, и недельный лимит тоже вдвое выше.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Иконки и пины:</strong> за первое достижение каждого ранга выдаются иконка игрока и пин этого ранга.
+                    </li>
+                    <li class="data-item" style="display: block; padding: 10px 0;">
+                        <strong>Быстрее на старте:</strong> на ранних и средних рангах прибавка Elo выросла, чтобы больше игроков доходило до Pro.
+                </ul>
+            </div>
+             </div> <!-- ЗАКРЫВАЕМ СТРАНИЦУ 1: РАНГОВЫЙ БОЙ -->
+
+            <!-- СТРАНИЦА 3: РЕЖИМЫ -->
+            <div id="page-modes" class="page-content">
+                <h1 class="page-title">Режимы игры</h1>
+                <p class="page-subtitle">Режимы, доступные в ранговом бою (формат 3 на 3)</p>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">1. Захват кристаллов</div>
+                        <p style="font-size: 18px; line-height: 1.6;">Кристаллы появляются в центре карты. Соберите <strong>10 кристаллов</strong> и удерживайте их <strong>15 секунд</strong>, не погибнув. Погибший боец роняет свои кристаллы.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2. Броубол</div>
+                        <p style="font-size: 18px; line-height: 1.6;">Футбол 3 на 3: забейте мяч в ворота соперника. Побеждает команда, забившая больше голов.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">3. Нокаут</div>
+                        <p style="font-size: 18px; line-height: 1.6;">Возрождения нет. Побеждает команда, уничтожившая всех соперников в раунде; матч идёт до двух выигранных раундов.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">4. Ограбление</div>
+                        <p style="font-size: 18px; line-height: 1.6;">У каждой команды есть сейф. Нужно уничтожить сейф соперников и защитить свой.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">5. Горячая зона</div>
+                        <p style="font-size: 18px; line-height: 1.6;">На карте есть зоны. Удерживайте их, чтобы набирать очки; побеждает команда, первой набравшая нужное количество.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">6. Награда за поимку</div>
+                        <p style="font-size: 18px; line-height: 1.6;">За победу над соперником вы получаете звёзды. Побеждает команда, у которой к концу матча больше звёзд.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- СТРАНИЦА 4: ФИЧИ И БАГИ -->
+            <div id="page-features" class="page-content">
+                <h1 class="page-title">Фичи и баги</h1>
+                <p class="page-subtitle">Интересные механики и ошибки в игре</p>
+
+                <div class="card" style="margin-bottom: 25px;">
+                    <div class="card-header">Фичи <span class="badge-live">Новое</span></div>
+                    <ul class="data-list" style="font-size: 18px; line-height: 1.6;">
+                        <li class="data-item" style="display: block; padding: 10px 0;"><strong>Обмен очередью:</strong> игроки одной команды могут меняться очередью выбора во время фазы пиков.</li>
+                        <li class="data-item" style="display: block; padding: 10px 0;"><strong>Быстрый чат в драфте:</strong> реплики, чтобы предложить союзникам забанить конкретного бойца.</li>
+                        <li class="data-item" style="display: block; padding: 10px 0;"><strong>Играть снова:</strong> мгновенный поиск нового матча с той же командой (кроме ранга «Мастер I» и выше).</li>
+                        <li class="data-item" style="display: block; padding: 10px 0;"><strong>Детальная статистика:</strong> урон, лечение и задачи режима по раундам.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Баги <span class="badge-live" style="background-color: #6272a4;">Список пуст</span></div>
+                    <p style="font-size: 18px; line-height: 1.6;">Подтверждённые баги пока не добавлены. Добавляйте сюда найденные ошибки: что произошло, на каком ранге и в каком режиме.</p>
+                </div>
+
+                <div class="card" style="margin-top: 25px;">
+                    <div class="card-header">Сообщить о баге</div>
+                    <p style="margin-bottom: 15px;">Нашли ошибку на сайте или в игре? Опишите её, и письмо откроется в вашей почте.</p>
+                    <label class="form-field">
+                        <span>Режим</span>
+                        <select id="bug-mode" class="form-input">
+                            <option>Не знаю / другое</option>
+                            <option>Захват кристаллов</option>
+                            <option>Броубол</option>
+                            <option>Нокаут</option>
+                            <option>Ограбление</option>
+                            <option>Горячая зона</option>
+                            <option>Награда за поимку</option>
+                        </select>
+                    </label>
+                    <label class="form-field">
+                        <span>Ранг</span>
+                        <input id="bug-rank" class="form-input" type="text" placeholder="Например, Алмаз II">
+                    </label>
+                    <label class="form-field">
+                        <span>Что произошло?</span>
+                        <textarea id="bug-text" class="form-input" placeholder="Опишите ошибку: что вы делали и что пошло не так"></textarea>
+                    </label>
+                    <button id="bug-send" class="game-btn">Отправить</button>
+                    <div id="bug-status" class="form-status"></div>
+                </div>
+            </div>
+
+            <!-- СТРАНИЦА 5: МИНИ-ИГРЫ -->
+            <div id="page-games" class="page-content">
+                <h1 class="page-title">Мини-игры</h1>
+                <p class="page-subtitle">Развлекись и проверь свои знания</p>
+
+                <div class="game-tabs">
+                    <button class="game-tab active" data-game="game-crystals">💎 Собери кристаллы</button>
+                    <button class="game-tab" data-game="game-quiz">❓ Викторина</button>
+                </div>
+
+                <div class="card game-panel active" id="game-crystals">
+                    <p style="margin-bottom: 15px;">Успей кликнуть по 10 кристаллам за 30 секунд, пока они не исчезли.</p>
+                    <div class="game-stats">
+                        <span>💎 Кристаллы: <strong id="cr-score">0</strong> / 10</span>
+                        <span>⏱ Время: <strong id="cr-time">30</strong></span>
+                        <span>🏆 Рекорд: <strong id="cr-best">0</strong></span>
+                    </div>
+                    <div id="cr-arena" class="game-arena">
+                        <div id="cr-overlay" class="game-overlay">
+                            <p id="cr-msg">Готов к захвату?</p>
+                            <button id="cr-start" class="game-btn">Начать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card game-panel" id="game-quiz">
+                    <p style="margin-bottom: 15px;">Проверь, как хорошо ты запомнил информацию о ранговом бое.</p>
+                    <div id="quiz-box"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <button id="back-to-top" class="back-to-top" title="Наверх">↑</button>
+    <script src="lang.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
