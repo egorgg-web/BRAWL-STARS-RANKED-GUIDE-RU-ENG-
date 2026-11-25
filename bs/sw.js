@@ -1,7 +1,7 @@
 // Service worker: сайт открывается и без интернета
-const CACHE = "ranked-guide-v1";
+const CACHE = "ranked-guide-v2";
 const ASSETS = [
-  "./", "main.html", "main.css", "script.js", "lang.js", "manifest.webmanifest",
+  "./", "index.html", "index.css", "script.js", "lang.js", "manifest.webmanifest",
   "icon-192.png", "icon-512.png",
   "img/Podbor.png", "img/CoinFlip.png", "img/Ranked3.0.png", "img/Ranked2.0.png"
 ];
@@ -35,6 +35,6 @@ self.addEventListener("fetch", (e) => {
         }
         return res;
       })
-      .catch(() => caches.match(e.request).then((r) => r || caches.match("main.html")))
+      .catch(() => caches.match(e.request).then((r) => r || caches.match("index.html")))
   );
 });

@@ -2,7 +2,7 @@
   "name": "Brawl Stars Ranked Guide",
   "short_name": "Ranked Guide",
   "description": "Гайд по ранговому бою Brawl Stars",
-  "start_url": "main.html",
+  "start_url": "index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b0e14",
